@@ -1,37 +1,36 @@
 const net = require('net');
 process.stdin.setEncoding('utf-8');
 
-// Crear un socket de cliente
 const client = new net.Socket();
 
-// Conectarse al servidor TCP en el puerto 8080
 client.connect(8080, '127.0.0.1', () => {
     console.log('Conectado al servidor TCP');
+    // process.argv[2] Es el tercer argumento pasado al ejecutar el script
+    // Por ejemplo, si ejecutamos "node index.js nombreUsuario", process.argv[2] sería "nombreUsuario"
+    const nombreUsuario = process.argv[2] || 'UsuarioSinNombre';
+    client.write("field//connectfield//" + nombreUsuario);
     process.stdout.write('Ingrese mensaje: ');
 });
 
-// Escuchar mensajes del servidor
 client.on('data', (data) => {
     console.log('\nMensaje del servidor: ' + data.toString());
     process.stdout.write('Ingrese mensaje: ');
 });
 
-// Manejar cierre de conexión
 client.on('close', () => {
     console.log('Conexión cerrada');
 });
 
-// Manejar errores
 client.on('error', (err) => {
     console.error('Error: ', err.message);
 });
 
-// Leer la entrada del usuario desde la consola
 process.stdin.on('data', (data) => {
-    const mensaje = data.toString().trim(); // Capturar entrada y eliminar espacios
+    const mensaje = data.toString().trim(); 
+    const msgToSend = `field//messagefield//${process.argv[2]}field//${process.argv[3]}field//`+mensaje;
     if (mensaje.toLowerCase() === 'exit') {
-        client.end(); // Finaliza la conexión si el usuario escribe 'exit'
+        client.end(); 
     } else {
-        client.write(mensaje); // Enviar el mensaje al servidor
+        client.write(msgToSend); 
     }
 });
