@@ -6,7 +6,7 @@ import (
 )
 
 type M interface {
-	SendById(message Message, conexion *net.Conn) bool
+	SendById(message Message, conection *net.Conn) bool
 }
 
 type Message struct {

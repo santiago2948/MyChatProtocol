@@ -65,12 +65,13 @@ func handleConnection(conn net.Conn) {
 		message := message.Message{Method: msg[1], Sender: msg[2], Content: msg[4], Receptor: msg[3]}
 			connReceptor := clients[message.Receptor]
 			if connReceptor != nil {
-			response:= message.SendById(connReceptor.conexion)
-			if !response {fmt.Println("Error al enviar el mensaje")}
-			}else{
-				fmt.Println("no se pudo encontrar al receptor", message.Receptor)
+				response := message.SendById(connReceptor.conexion)
+				if !response {
+					fmt.Println("Error al enviar el mensaje") 
+				}
+			} else {
+				fmt.Println("no se pudo encontrar al receptor", message.Receptor) 
 			}
-			
 		}
 }
 }
