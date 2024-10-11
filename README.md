@@ -19,11 +19,6 @@
 - [Conclusiones](#conclusiones)
 - [Referencias](#referencias)
 
-
-Con este archivo, estarías listo para documentar y subir tu proyecto en GitHub. ¿Hay algún ajuste adicional que te gustaría realizar?
-
-
-
 ## Introducción
 
 Este proyecto es un sistema de chat cliente-servidor que permite la comunicación en tiempo real entre varios usuarios a través de una arquitectura cliente-servidor utilizando sockets TCP. El cliente está desarrollado en **Node.js** y el servidor en **Go**, lo que permite demostrar la interoperabilidad de sistemas en red usando diferentes tecnologías.
