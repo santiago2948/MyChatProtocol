@@ -61,7 +61,7 @@ El proyecto sigue una arquitectura cliente-servidor donde:
 3. Ejecuta `npm intall` para instalar las dependencias.
 4. Ejecuta el cliente con el siguiente comando:
    ```bash
-   node index.js [nombreUsuario]
+   node index.js [nombreUsuario] [nombre del usuario que se le quiere mandar el mensaje]
 
 ## Desarrollo
 
