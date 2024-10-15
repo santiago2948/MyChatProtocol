@@ -10,11 +10,25 @@ import (
 
 type SocketInterfface interface{
 	HandleConnection(conn net.Conn)
+	Conexions()
 }
 
 
 type Socket struct{
 	Clients map[string]*client.Client
+	Listener net.Listener
+}
+
+func (s *Socket) Conexion(){
+	for {
+		conn, err := s.Listener.Accept()
+		if err != nil {
+			fmt.Println("Error al aceptar conexión:", err)
+			continue
+		}
+
+		go s.HandleConnection(conn)
+	}
 }
 
 

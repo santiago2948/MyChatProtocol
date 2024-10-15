@@ -17,15 +17,6 @@ func main() {
 
 	fmt.Println("Servidor TCP escuchando en :8080")
 	var clients = make(map[string]*client.Client)
-
-	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			fmt.Println("Error al aceptar conexión:", err)
-			continue
-		}
-		ws := socket.Socket{Clients: clients}
-
-		go ws.HandleConnection(conn)
-	}
+	ws := socket.Socket{Clients: clients, Listener: listener}
+	ws.Conexion()
 }
