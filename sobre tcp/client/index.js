@@ -13,7 +13,7 @@ client.connect(8080, '127.0.0.1', () => {
 });
 
 client.on('data', (data) => {
-    console.log('\nMensaje del servidor: ' + data.toString());
+    console.log( `\n`+ data.toString());
     process.stdout.write('Ingrese mensaje: ');
 });
 

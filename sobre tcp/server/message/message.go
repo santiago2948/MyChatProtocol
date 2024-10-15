@@ -18,7 +18,7 @@ type Message struct {
 
 
 func (m *Message) SendById(conn net.Conn) bool {
-	_, err := conn.Write([]byte("Mensaje: " + m.Content))
+	_, err := conn.Write([]byte(m.Sender+ ":" + m.Content))
 	if err != nil {
 		fmt.Println("Error al escribir:", err)
 		return false
